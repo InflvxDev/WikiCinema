@@ -28,14 +28,18 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   void initState() {
     super.initState();
     ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+    ref.read(upcomingMoviesProvider.notifier).loadNextPage();
     ref.read(popularMoviesProvider.notifier).loadNextPage();
+    ref.read(topRatedMoviesProvider.notifier).loadNextPage();
   }
 
   @override
   Widget build(BuildContext context) {
     
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
+    final upcomingMovies = ref.watch(upcomingMoviesProvider);
     final popularMovies = ref.watch(popularMoviesProvider);
+    final topRatedMovies = ref.watch(topRatedMoviesProvider);
     final moviesSlideShow = ref.watch(moviesSlideShowProvider);
 
     return CustomScrollView(slivers: [
@@ -54,6 +58,7 @@ class _HomeViewState extends ConsumerState<_HomeView> {
             return Column(
               children: [
                 MoviesSliedShow(movies: moviesSlideShow),
+
                 MovieHorizontalListview(
                   movies: nowPlayingMovies,
                   title: 'En Cines',
@@ -62,14 +67,16 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                       .read(nowPlayingMoviesProvider.notifier)
                       .loadNextPage(),
                 ),
+
                 MovieHorizontalListview(
-                  movies: nowPlayingMovies,
+                  movies: upcomingMovies,
                   title: 'Proximante',
                   subtitle: 'En este mes',
                   loadNextPage: () => ref
-                      .read(nowPlayingMoviesProvider.notifier)
+                      .read(upcomingMoviesProvider.notifier)
                       .loadNextPage(),
                 ),
+
                 MovieHorizontalListview(
                   movies: popularMovies,
                   title: 'Populares',
@@ -77,13 +84,15 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                       .read(popularMoviesProvider.notifier)
                       .loadNextPage(),
                 ),
+
                 MovieHorizontalListview(
-                  movies: nowPlayingMovies,
+                  movies: topRatedMovies,
                   title: 'Mejor Calificada',
                   loadNextPage: () => ref
-                      .read(nowPlayingMoviesProvider.notifier)
+                      .read(topRatedMoviesProvider.notifier)
                       .loadNextPage(),
                 ),
+                
               ],
             );
           },

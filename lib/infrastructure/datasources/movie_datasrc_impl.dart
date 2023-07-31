@@ -16,7 +16,7 @@ class MovieDBDatasourceImpl extends MoviesDataSource {
   ));
 
 
-  List<Movie> _getMoviesResponse (response){
+  List<Movie> _mapMoviesResponse (response){
     final moviedbResponse = MovieDbResponse.fromJson(response.data);
 
     final List<Movie> movies = moviedbResponse.results
@@ -33,7 +33,7 @@ class MovieDBDatasourceImpl extends MoviesDataSource {
       'page' : page
     });
     
-    return _getMoviesResponse(response);
+    return _mapMoviesResponse(response);
   }
   
   @override
@@ -42,7 +42,25 @@ class MovieDBDatasourceImpl extends MoviesDataSource {
       'page' : page
     });
     
-    return _getMoviesResponse(response);
+    return _mapMoviesResponse(response);
+  }
+  
+  @override
+  Future<List<Movie>> getTopRated({int page = 1}) async{
+    final response = await dio.get('/movie/top_rated', queryParameters: {
+      'page' : page
+    });
+    
+    return _mapMoviesResponse(response);
+  }
+  
+  @override
+  Future<List<Movie>> getUpcoming({int page = 1}) async{
+    final response = await dio.get('/movie/upcoming', queryParameters: {
+      'page' : page
+    });
+    
+    return _mapMoviesResponse(response);
   }
   
 }
