@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class CustomAppbar extends StatelessWidget {
@@ -13,7 +11,7 @@ class CustomAppbar extends StatelessWidget {
     return SafeArea(
       bottom: false,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal:10),
         child: SizedBox(
           width: double.infinity,
           child: Row(

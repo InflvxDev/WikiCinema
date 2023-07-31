@@ -144,7 +144,7 @@ class _Tittle extends StatelessWidget {
         children: [
 
           if(tittle != null)
-            Text(tittle!, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
+            Text(tittle!, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
           
           const Spacer(),
 
