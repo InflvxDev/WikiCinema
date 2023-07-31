@@ -11,6 +11,15 @@ final nowPlayingMoviesProvider = StateNotifierProvider<MoviesController, List<Mo
   
 });
 
+final popularMoviesProvider = StateNotifierProvider<MoviesController, List<Movie>>((ref) {
+  
+  final fetchMoreMovies = ref.watch(movieRepositoryProvider).getPopular;
+  return MoviesController(fetchMoreMovies: fetchMoreMovies);
+  
+});
+
+
+
 typedef MovieCallback = Future<List<Movie>> Function({int page});
 
 class MoviesController extends StateNotifier<List<Movie>> {
