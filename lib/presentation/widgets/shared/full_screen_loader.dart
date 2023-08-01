@@ -48,7 +48,7 @@ class FullScreenLoader extends StatelessWidget {
             stream: getLoadingMessages(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return Text('Cargando...');
+                return const Text('Cargando...');
               }
 
               return Text(snapshot.data!);
