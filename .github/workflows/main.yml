@@ -6,7 +6,7 @@ on:
 name: Build and Deploy
 jobs:
   build_appbundle:
-    name: Build App Andriod
+    name: Build App Android
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,6 +17,8 @@ jobs:
         with:
           flutter-version: '3.10.6'
           channel: 'stable'
+      - name: Create .env file
+        run: echo "MOVIEDB_KEY=bbeb5400d4c9ce3339f99510fe6c9f22" > .env
       - run: flutter pub get
       - run: flutter build apk
       - run: flutter build appbundle
