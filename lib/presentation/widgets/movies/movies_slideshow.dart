@@ -77,38 +77,46 @@ class _Slide extends StatelessWidget {
                   },
                 ),
 
-                Padding(
+                const SizedBox.expand(
+                child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.bottomLeft,
+                            stops: [0.0, 0.3],
+                            colors: [
+                              Colors.black87,
+                              Colors.transparent, 
+                            ]))),
+              ),
+
+              Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        color: Colors.black38,
-                        child: Text(
-                          movie.title,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            
-                          ),
+                      Text(
+                        movie.title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          
                         ),
                       ),
                       
-                      Container(
-                        color: Colors.black38,
-                        child: Text(
-                          '(${movie.releaseDate.day.toString()}/${movie.releaseDate.month.toString()}/${movie.releaseDate.year.toString()})',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 10
-                          ),
+                      Text(
+                        '(${movie.releaseDate.day.toString()}/${movie.releaseDate.month.toString()}/${movie.releaseDate.year.toString()})',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10
                         ),
                       ),
                     ],
                   )
-                )
+                ),
+
+
               ]
             ),
           )
