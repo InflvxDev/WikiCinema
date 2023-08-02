@@ -22,7 +22,7 @@ class CustomAppbar extends StatelessWidget {
                 size: 25,
               ),
               const SizedBox(width: 5,),
-              const Text('WikiCinema',
+              const Text('FilmografíaWiki',
                 style: TextStyle(
                   fontSize: 22,
                   color: Colors.grey,
