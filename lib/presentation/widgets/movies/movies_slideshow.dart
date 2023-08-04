@@ -58,70 +58,25 @@ class _Slide extends StatelessWidget {
     );
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 50),
+      padding: const EdgeInsets.only( bottom: 30 ),
       child: DecoratedBox(
         decoration: decoration,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Stack(
-              children: [
-                Image.network(
-                fit: BoxFit.cover,
-                movie.backdropPath,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress != null) {
-                      return const DecoratedBox(
-                          decoration: BoxDecoration(color: Colors.black12));
-                    }
-
-                    return FadeIn(child: child);
-                  },
-                ),
-
-                const SizedBox.expand(
-                child: DecoratedBox(
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.bottomLeft,
-                            stops: [0.0, 0.3],
-                            colors: [
-                              Colors.black87,
-                              Colors.transparent, 
-                            ]))),
-              ),
-
-              Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        movie.title,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          
-                        ),
-                      ),
-                      
-                      Text(
-                        '(${movie.releaseDate.day.toString()}/${movie.releaseDate.month.toString()}/${movie.releaseDate.year.toString()})',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 10
-                        ),
-                      ),
-                    ],
-                  )
-                ),
-
-
-              ]
-            ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.network(
+            movie.backdropPath,
+            fit: BoxFit.cover,
+            loadingBuilder: (context, child, loadingProgress) {
+              if ( loadingProgress != null ) {
+                return const DecoratedBox(
+                  decoration: BoxDecoration( color: Colors.black12 )
+                );
+              }
+              return FadeIn(child: child);
+            },
           )
-        ),
+        )
+      )
     );
   }
 }
