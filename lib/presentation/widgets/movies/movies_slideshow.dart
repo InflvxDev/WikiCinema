@@ -66,6 +66,7 @@ class _Slide extends StatelessWidget {
             child: Stack(
               children: [
                 Image.network(
+                fit: BoxFit.cover,
                 movie.backdropPath,
                   loadingBuilder: (context, child, loadingProgress) {
                     if (loadingProgress != null) {
